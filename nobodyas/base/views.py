@@ -1,18 +1,17 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse('<h2>Home</h2>')
+    return render(request, 'base/home.html')
 
 
 def posts(request):
-    return HttpResponse('<h2>Posts</h2>')
+    return render(request, 'base/posts.html')
 
 
 def post(request):
-    return HttpResponse('<h2>Post title</h2>')
+    return render(request, 'base/post.html')
 
 
 def profile(request):
-    return HttpResponse('<h2>Profile</h2>')
+    return render(request, 'base/profile.html')

@@ -13,9 +13,9 @@ def navbar(request):
             'active': '/posts/' == current_url
         },
         {
-            'name': 'Profile',
-            'url_name': 'profile',
-            'active': '/profile/' == current_url
+            'name': 'Portfolio',
+            'url_name': 'portfolio',
+            'active': '/portfolio/' == current_url
         },
     ]
 

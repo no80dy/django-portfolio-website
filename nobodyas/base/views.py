@@ -35,8 +35,8 @@ def post(request):
     return render(request, 'base/post.html', context)
 
 
-def profile(request):
+def portfolio(request):
     context = {
-        'title': 'Posts',
+        'title': 'Portfolio',
     }
-    return render(request, 'base/profile.html', context)
+    return render(request, 'base/portfolio.html', context)

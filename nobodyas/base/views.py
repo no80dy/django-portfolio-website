@@ -1,17 +1,42 @@
 from django.shortcuts import render
 
+from .models import Post, Tag
+
 
 def home(request):
-    return render(request, 'base/home.html')
+    posts = Post.objects.all()
+    tags = Tag.objects.all()
+
+    context = {
+        'title': 'Home',
+        'posts': posts,
+        'tags': tags,
+    }
+
+    return render(request, 'base/home.html', context)
 
 
 def posts(request):
-    return render(request, 'base/posts.html')
+    posts = Post.objects.all()
+    tags = Tag.objects.all()
+
+    context = {
+        'title': 'Home',
+        'posts': posts,
+        'tags': tags,
+    }
+    return render(request, 'base/posts.html', context)
 
 
 def post(request):
-    return render(request, 'base/post.html')
+    context = {
+        'title': 'Posts',
+    }
+    return render(request, 'base/post.html', context)
 
 
 def profile(request):
-    return render(request, 'base/profile.html')
+    context = {
+        'title': 'Posts',
+    }
+    return render(request, 'base/profile.html', context)

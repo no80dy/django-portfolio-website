@@ -28,11 +28,9 @@ def posts(request):
     return render(request, 'base/posts.html', context)
 
 
-def post(request):
-    context = {
-        'title': 'Posts',
-    }
-    return render(request, 'base/post.html', context)
+def post(request, id):
+    post = Post.objects.get(pk=id)
+    return render(request, 'base/post.html', {'post': post})
 
 
 def portfolio(request):

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Tag(models.Model):
@@ -17,6 +18,9 @@ class Post(models.Model):
     is_featured = models.BooleanField(default=False)
 
     tags = models.ManyToManyField(Tag, null=True)
+
+    def get_absolute_url(self):
+        return reverse("post", kwargs={"id": self.pk})
 
     def __str__(self) -> str:
         return self.title

@@ -13,50 +13,19 @@
                 Web applications
             </h6>
         </div>
-        <div class="col-sm-4 p-1">
-            <a class="posts-list-item d-block text-center" href="#">
-                <img class="posts-list-item-image" src="/static/images/golang.jpeg" alt="img">
-                <p class="posts-list-item-title my-2">
-                    ETL pipeline
-                </p>
-                <p class="posts-list-item-description">
-                    This ETL pipeline move data from PostgreSQL to ElasticSearch.
-                </p>
-            </a>
-        </div>
-        <div class="col-sm-4 p-1">
-            <a class="posts-list-item d-block text-center" href="#">
-                <img class="posts-list-item-image" src="/static/images/golang.jpeg" alt="img">
-                <p class="posts-list-item-title my-2">
-                    ETL pipeline
-                </p>
-                <p class="posts-list-item-description">
-                    This ETL pipeline move data from PostgreSQL to ElasticSearch.
-                </p>
-            </a>
-        </div>
-        <div class="col-sm-4 p-1">
-            <a class="posts-list-item d-block text-center" href="#">
-                <img class="posts-list-item-image" src="/static/images/golang.jpeg" alt="img">
-                <p class="posts-list-item-title my-2">
-                    ETL pipeline
-                </p>
-                <p class="posts-list-item-description">
-                    This ETL pipeline move data from PostgreSQL to ElasticSearch.
-                </p>
-            </a>
-        </div>
-        <div class="col-sm-4 p-1">
-            <a class="posts-list-item d-block text-center" href="#">
-                <img class="posts-list-item-image" src="/static/images/golang.jpeg" alt="img">
-                <p class="posts-list-item-title my-2">
-                    ETL pipeline
-                </p>
-                <p class="posts-list-item-description">
-                    This ETL pipeline move data from PostgreSQL to ElasticSearch.
-                </p>
-            </a>
-        </div>
+        {% for post in posts %}
+            <div class="col-sm-4 p-1">
+                <a class="posts-list-item d-block text-center" href="{{ post.get_absolute_url }}">
+                    <img class="posts-list-item-image" src="/static/images/golang.jpeg" alt="img">
+                    <p class="posts-list-item-title my-2">
+                        {{ post.title }}
+                    </p>
+                    <p class="posts-list-item-description">
+                        {{ post.sub_title }}
+                    </p>
+                </a>
+            </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock content %}

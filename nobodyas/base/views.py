@@ -40,3 +40,11 @@ def portfolio(request):
         'title': 'Portfolio',
     }
     return render(request, 'base/portfolio.html', context)
+
+
+def contacts(request):
+    return render(request, 'base/contacts.html')
+
+
+def about(request):
+    return render(request, 'base/about.html')

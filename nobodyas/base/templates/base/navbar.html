@@ -6,10 +6,21 @@
         </button>
         <div class="collapse navbar-collapse m-xl-4" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-            <a class="nav-link" href="#">Features</a>
-            <a class="nav-link" href="#">Pricing</a>
-            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'home' %}">
+                    Home
+                </a>
+                <a class="nav-link {% if request.path == '/posts/' %}active{% endif %}" href="{% url 'posts' %}">
+                    Posts
+                </a>
+                <a class="nav-link {% if request.path == '/portfolio/' %}active{% endif %}" href="{% url 'portfolio' %}">
+                    Portfolio
+                </a>
+                <a class="nav-link {% if request.path == '/contacts/' %}active{% endif %}" href="{% url 'contacts' %}">
+                    Contact me
+                </a>
+                <a class="nav-link {% if request.path == '/about/' %}active{% endif %}" href="{% url 'about' %}">
+                    About me
+                </a>
             </div>
         </div>
     </div>

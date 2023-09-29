@@ -1,48 +1,62 @@
 {% extends 'base/main.html' %}
 
 {% block content %}
-<main>
-    <div class="row">
-        <div class="left-main-body col">
-            <div class="mb-4">
-                <h3>Latest blog posts</h3>
-            </div>
-            {% for post in posts %}
-                <div class="post-item card mb-3">
-                    <div class="row g-0">
-                    <div class="post-item-img col-md-4">
-                        <img src="/static/images/golang.jpeg" class="img-fluid rounded-start" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                        <h5 class="card-title">{{ post.title }}</h5>
-                        {% for tag in post.tags.all %}
-                            <a href="#" style="text-decoration: none;">
-                                <span class="badge bg-secondary">#{{ tag.name }}</span>
-                            </a>
-                        {% endfor %}
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            {% endfor %}
+<div class="container">
+    <div class="posts-list row">
+        <div class="posts-list-title p-1 mb-4">
+            <h5>
+                My posts
+            </h5>
         </div>
-        <div class="col-lg-4 right-main-body">
-            <div class="mb-4">
-                <h3>Tags</h3>
-            </div>
-            <div class="right-main-body-tags border">
-                {% for tag in tags %}
-                    <a href="#" style="text-decoration: none;">
-                        <span class="badge bg-secondary">#{{ tag.name }}</span>
-                    </a>
-                {% endfor %}
-            </div>
+        <div class="p-1">
+            <h6 class="posts-list-title-category py-1">
+                Web applications
+            </h6>
+        </div>
+        <div class="col-sm-4 p-1">
+            <a class="posts-list-item d-block text-center" href="#">
+                <img class="posts-list-item-image" src="/static/images/golang.jpeg" alt="img">
+                <p class="posts-list-item-title my-2">
+                    ETL pipeline
+                </p>
+                <p class="posts-list-item-description">
+                    This ETL pipeline move data from PostgreSQL to ElasticSearch.
+                </p>
+            </a>
+        </div>
+        <div class="col-sm-4 p-1">
+            <a class="posts-list-item d-block text-center" href="#">
+                <img class="posts-list-item-image" src="/static/images/golang.jpeg" alt="img">
+                <p class="posts-list-item-title my-2">
+                    ETL pipeline
+                </p>
+                <p class="posts-list-item-description">
+                    This ETL pipeline move data from PostgreSQL to ElasticSearch.
+                </p>
+            </a>
+        </div>
+        <div class="col-sm-4 p-1">
+            <a class="posts-list-item d-block text-center" href="#">
+                <img class="posts-list-item-image" src="/static/images/golang.jpeg" alt="img">
+                <p class="posts-list-item-title my-2">
+                    ETL pipeline
+                </p>
+                <p class="posts-list-item-description">
+                    This ETL pipeline move data from PostgreSQL to ElasticSearch.
+                </p>
+            </a>
+        </div>
+        <div class="col-sm-4 p-1">
+            <a class="posts-list-item d-block text-center" href="#">
+                <img class="posts-list-item-image" src="/static/images/golang.jpeg" alt="img">
+                <p class="posts-list-item-title my-2">
+                    ETL pipeline
+                </p>
+                <p class="posts-list-item-description">
+                    This ETL pipeline move data from PostgreSQL to ElasticSearch.
+                </p>
+            </a>
         </div>
     </div>
-</main>
+</div>
 {% endblock content %}
-
-<!-- Here's will be all posts and tags (may be will be to add search by name anf filter by tags) with paginator -->

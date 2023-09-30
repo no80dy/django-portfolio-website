@@ -15,15 +15,25 @@
         </div>
         {% for post in posts %}
             <div class="col-sm-4 p-1">
-                <a class="posts-list-item d-block text-center" href="{{ post.get_absolute_url }}">
+                <div class="posts-list-item">
                     <img class="posts-list-item-image" src="/static/images/golang.jpeg" alt="img">
-                    <p class="posts-list-item-title my-2">
-                        {{ post.title }}
-                    </p>
-                    <p class="posts-list-item-description">
-                        {{ post.sub_title }}
-                    </p>
-                </a>
+                    <div class="p-3">
+                        <div>
+                            {% for tag in tags %}
+                                <span class="badge bg-secondary">{{ tag.name }}</span>
+                            {% endfor %}
+                        </div>
+                        <h5 class="posts-list-item-title my-2">
+                            {{ post.title }}
+                        </h5>
+                        <p class="posts-list-item-description">
+                            {{ post.sub_title }}
+                        </p>
+                        <a href="{{ post.get_absolute_url }}">
+                            Read more
+                        </a>
+                    </div>
+                </div>
             </div>
         {% endfor %}
     </div>

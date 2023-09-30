@@ -17,11 +17,15 @@ def home(request):
 
 
 def posts(request):
+    context = {
+        'title': 'Posts',
+    }
+
     posts = Post.objects.all()
     tags = Tag.objects.all()
 
     context = {
-        'title': 'Home',
+        'title': 'Posts',
         'posts': posts,
         'tags': tags,
     }
@@ -30,7 +34,11 @@ def posts(request):
 
 def post(request, id):
     post = Post.objects.get(pk=id)
-    return render(request, 'base/post.html', {'post': post})
+    context = {
+        'title': 'Post',
+        'post': post,
+    }
+    return render(request, 'base/post.html', context)
 
 
 def portfolio(request):
@@ -41,8 +49,14 @@ def portfolio(request):
 
 
 def contacts(request):
-    return render(request, 'base/contacts.html')
+    context = {
+        'title': 'Contact me',
+    }
+    return render(request, 'base/contacts.html', context)
 
 
 def about(request):
-    return render(request, 'base/about.html')
+    context = {
+        'title': 'About me',
+    }
+    return render(request, 'base/about.html', context)

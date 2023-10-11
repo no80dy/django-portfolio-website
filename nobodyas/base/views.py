@@ -1,16 +1,10 @@
 from django.shortcuts import render
-
 from .models import Post, Tag
 
 
 def home(request):
-    posts = Post.objects.all()
-    tags = Tag.objects.all()
-
     context = {
         'title': 'Home',
-        'posts': posts,
-        'tags': tags,
     }
 
     return render(request, 'base/home.html', context)
@@ -21,7 +15,7 @@ def posts(request):
         'title': 'Posts',
     }
 
-    posts = Post.objects.all()
+    posts = Post.objects.filter(is_active=True)
     tags = Tag.objects.all()
 
     context = {

@@ -16,7 +16,7 @@
         {% for post in posts %}
             <div class="col-sm-4 p-1">
                 <div class="posts-list-item">
-                    <img class="posts-list-item-image" src="/static/images/golang.jpeg" alt="img">
+                    <img class="posts-list-item-image" src="{{ post.image.url }}" alt="img">
                     <div class="p-3">
                         <div>
                             {% for tag in tags %}

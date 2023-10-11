@@ -13,8 +13,6 @@ include(
 
 if 'development' in os.environ.get('DJANGO_ENV', ''):
     include('development.py')
-    print('development')
 elif 'production' in os.environ.get('DJANGO_ENV', ''):
     include('production.py')
-    print('production')
 print('None')

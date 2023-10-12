@@ -33,7 +33,7 @@ a {
 }
 
 .technology-stack-list-title {
-    border-bottom: 1px solid hsl(0, 0%, 60%);
+    border-bottom: 1px solid #dee2e6;
 }
 
 .technology-stack-list-item {
@@ -45,7 +45,7 @@ a {
 }
 
 .main-container-pages-list-title {
-    border-bottom: 1px solid hsl(0, 0%, 60%);
+    border-bottom: 1px solid #dee2e6;
 }
 
 .main-container-pages-list-item {
@@ -75,7 +75,7 @@ a {
 /* Portfolio */
 
 .portfolio-list-item {
-    border: 1px solid hsl(0, 0%, 60%);
+    border: 1px solid #dee2e6;
     border-radius: 5px;
 }
 
@@ -88,7 +88,7 @@ a {
 }
 
 .portfolio-list-title-category {
-    border-bottom: 1px solid hsl(0, 0%, 60%);
+    border-bottom: 1px solid #dee2e6;
 }
 
 /* About me */
@@ -99,13 +99,13 @@ a {
 }
 
 #border-bottom {
-    border-bottom: 1px solid hsl(0, 0%, 60%);
+    border-bottom: 1px solid #dee2e6;
 }
 
 /* Posts */
 
 .posts-list-item {
-    border: 1px solid hsl(0, 0%, 60%);
+    border: 1px solid #dee2e6;
     border-radius: 5px;
 }
 
@@ -118,7 +118,7 @@ a {
 }
 
 .posts-list-title-category {
-    border-bottom: 1px solid hsl(0, 0%, 60%);
+    border-bottom: 1px solid #dee2e6;
 }
 
 .tags-list {

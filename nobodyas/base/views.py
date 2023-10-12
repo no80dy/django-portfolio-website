@@ -1,6 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 
 from .models import Post
 from .forms import PostForm
@@ -116,3 +119,26 @@ def delete_post(request, id):
     context = {'item': post}
 
     return render(request, 'base/delete.html', context)
+
+
+def send_email(request):
+    template = render_to_string(
+        'base/email_template.html',
+        {
+            'name': request.POST['name'],
+            'email': request.POST['email'],
+            'message': request.POST['message'],
+        }
+    )
+
+    email = EmailMessage(
+        request.POST['subject'],
+        template,
+        settings.EMAIL_HOST_USER,
+        [settings.EMAIL_HOST_RECEIVER, ]
+    )
+
+    email.fail_silently = False
+    email.send()
+
+    return HttpResponse('Email was sent!')

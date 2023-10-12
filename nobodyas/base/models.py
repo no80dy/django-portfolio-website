@@ -11,11 +11,11 @@ class Tag(models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200)
-    sub_title = models.CharField(max_length=200, blank=True)
+    sub_title = models.CharField(max_length=200)
     image = models.ImageField(
         null=True, blank=True, upload_to="images", default='placeholder.jpg'
     )
-    body = models.TextField(blank=True)
+    body = models.TextField()
     created_at = models.DateField(auto_now_add=True)
     is_active = models.BooleanField(default=False)
     is_featured = models.BooleanField(default=False)

@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 from .models import Post, Tag
+from .forms import PostForm
 
 
 def home(request):
@@ -54,3 +56,19 @@ def about(request):
         'title': 'About me',
     }
     return render(request, 'base/about.html', context)
+
+
+def create_post(request):
+    form = PostForm()
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('posts')
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'base/post_form.html', context)

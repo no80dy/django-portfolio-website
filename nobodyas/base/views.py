@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Post, Tag
 from .forms import PostForm
+from .filters import PostFilter
 
 
 def home(request):
@@ -14,18 +15,16 @@ def home(request):
 
 
 def posts(request):
-    context = {
-        'title': 'Posts',
-    }
-
     posts = Post.objects.filter(is_active=True)
-    tags = Tag.objects.all()
+    post_filter = PostFilter(request.GET, queryset=posts)
+    posts = post_filter.qs
 
     context = {
         'title': 'Posts',
         'posts': posts,
-        'tags': tags,
+        'post_filter': post_filter,
     }
+
     return render(request, 'base/posts.html', context)
 
 

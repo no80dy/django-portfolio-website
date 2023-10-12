@@ -74,3 +74,21 @@ def create_post(request):
     }
 
     return render(request, 'base/post_form.html', context)
+
+
+@login_required(login_url='home')
+def update_post(request, id):
+    post = Post.objects.get(pk=id)
+    form = PostForm(instance=post)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+        return redirect('posts')
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'base/post_form.html', context)

@@ -1,20 +1,30 @@
 {% extends 'base/main.html' %}
-
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
+    <style>
+        #div_id_tags > div {
+            max-height: 100px;
+            overflow-y: scroll;
+            border: 1px solid #dee2e6;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .form-group {
+            margin: 10px;
+        }
+
+        .asteriskField {
+            color: red;
+        }
+    </style>
     <div class="container">
         <h3>Create Post</h3>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <div class="my-4">
-                {% for field in form %}
-                <div class="my-2">
-                    {{ field.label_tag }}
-                    <div>{{ field }}</div>
-                </div>
-                {% endfor %}
-            </div>
+            {{ form|crispy }}
             <input class="btn btn-primary" type="submit" value="Submit" />
         </form>
     </div>

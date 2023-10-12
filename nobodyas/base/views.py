@@ -92,3 +92,16 @@ def update_post(request, id):
     }
 
     return render(request, 'base/post_form.html', context)
+
+
+@login_required(login_url='home')
+def delete_post(request, id):
+    post = Post.objects.get(pk=id)
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('posts')
+
+    context = {'item': post}
+
+    return render(request, 'base/delete.html', context)

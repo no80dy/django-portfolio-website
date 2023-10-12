@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from .models import Post, Tag
+from .models import Post
 from .forms import PostForm
 from .filters import PostFilter
 
@@ -19,10 +20,21 @@ def posts(request):
     post_filter = PostFilter(request.GET, queryset=posts)
     posts = post_filter.qs
 
+    page_number = request.GET.get('page')
+    paginator = Paginator(posts, 6)
+
+    try:
+        posts = paginator.page(page_number)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
+
     context = {
         'title': 'Posts',
         'posts': posts,
         'post_filter': post_filter,
+        'paginator': paginator,
     }
 
     return render(request, 'base/posts.html', context)

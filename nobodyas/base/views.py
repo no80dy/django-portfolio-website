@@ -141,4 +141,4 @@ def send_email(request):
     email.fail_silently = False
     email.send()
 
-    return HttpResponse('Email was sent!')
+    return render(request, 'base/email_sent.html')

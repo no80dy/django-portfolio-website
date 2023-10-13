@@ -1,0 +1,10 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+    <div class="container">
+        <h3>Thanks for message!</h3>
+        <div class="alert alert-success" role="alert">
+            Your message was successfully sent. To return to the main page, <a href="{% url 'home' %}" class="alert-link">click here</a>
+        </div>
+    </div>
+{% endblock content %}

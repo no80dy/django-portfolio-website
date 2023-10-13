@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.mail import EmailMessage
@@ -43,8 +43,8 @@ def posts(request):
     return render(request, 'base/posts.html', context)
 
 
-def post(request, id):
-    post = Post.objects.get(pk=id)
+def post(request, slug):
+    post = Post.objects.get(slug=slug)
     context = {
         'title': 'Post',
         'post': post,
@@ -91,8 +91,8 @@ def create_post(request):
 
 
 @login_required(login_url='home')
-def update_post(request, id):
-    post = Post.objects.get(pk=id)
+def update_post(request, slug):
+    post = Post.objects.get(slug=slug)
     form = PostForm(instance=post)
 
     if request.method == 'POST':
@@ -109,8 +109,8 @@ def update_post(request, id):
 
 
 @login_required(login_url='home')
-def delete_post(request, id):
-    post = Post.objects.get(pk=id)
+def delete_post(request, slug):
+    post = Post.objects.get(slug=slug)
 
     if request.method == 'POST':
         post.delete()

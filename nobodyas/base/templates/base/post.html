@@ -11,7 +11,7 @@
             <span class="badge bg-secondary">{{ tag.name }}</span>
         {% endfor %}
         <div class="post-text-body mt-4">
-            <p>{{ post.body }}</p>
+            <p>{{ post.body|safe }}</p>
         </div>
     </div>
 </div>

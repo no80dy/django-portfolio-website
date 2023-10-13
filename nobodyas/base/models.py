@@ -1,7 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
-from django.db import IntegrityError
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class Tag(models.Model):
@@ -17,7 +17,7 @@ class Post(models.Model):
     image = models.ImageField(
         null=True, blank=True, upload_to="images", default='placeholder.jpg'
     )
-    body = models.TextField()
+    body = RichTextUploadingField()
     created_at = models.DateField(auto_now_add=True)
     is_active = models.BooleanField(default=False)
     is_featured = models.BooleanField(default=False)

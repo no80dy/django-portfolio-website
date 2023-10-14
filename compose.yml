@@ -1,0 +1,38 @@
+version: '3'
+services:
+  service:
+    build: nobodyas
+    env_file:
+      - ./.env
+    volumes:
+      - ./nobodyas/staticfiles:/opt/nobodyas/static/
+      - ./nobodyas/media:/opt/nobodyas/media/
+    ports:
+      - "8000"
+    depends_on:
+      - database
+
+  database:
+    image: postgres
+    container_name: postgres-cont
+    env_file:
+      - ./.env
+    ports:
+      - "5432"
+    volumes:
+      - /custom/mount:/var/lib/postgresql/data
+  
+  nginx:
+    image: nginx:latest
+    volumes:
+      - ./nobodyas/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nobodyas/configs/real_ip.conf:/etc/nginx/templates/real_ip.conf.template:ro
+      - ./nobodyas/configs/site.conf:/etc/nginx/conf.d/site.conf:ro
+      - ./nobodyas/staticfiles:/data/static/:ro
+      - ./nobodyas/media:/data/media/
+    depends_on:
+      - service
+    env_file:
+      - ./.env
+    ports:
+      - "80:80"

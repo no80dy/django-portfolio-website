@@ -5,7 +5,7 @@ from django.core.mail import EmailMessage
 from django.conf import settings
 from django.template.loader import render_to_string
 
-from .models import Post
+from .models import Post, PortfolioProject
 from .forms import PostForm
 from .filters import PostFilter
 
@@ -53,9 +53,13 @@ def post(request, slug):
 
 
 def portfolio(request):
+    projects = PortfolioProject.objects.all()
+
     context = {
         'title': 'Portfolio',
+        'projects': projects,
     }
+
     return render(request, 'base/portfolio.html', context)
 
 

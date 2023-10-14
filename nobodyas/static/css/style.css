@@ -78,6 +78,7 @@ a {
 .portfolio-list-item {
     border: 1px solid #dee2e6;
     border-radius: 5px;
+    color: black;
 }
 
 .portfolio-list-item-image {

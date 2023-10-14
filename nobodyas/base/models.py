@@ -22,7 +22,7 @@ class Post(models.Model):
     is_active = models.BooleanField(default=False)
     is_featured = models.BooleanField(default=False)
 
-    tags = models.ManyToManyField(Tag, null=True)
+    tags = models.ManyToManyField(Tag)
     slug = models.SlugField(null=True, blank=True, unique=True)
 
     def get_absolute_url(self):
@@ -43,6 +43,19 @@ class Post(models.Model):
             new_slug = f"{base_slug}-{count}"
             count += 1
         return new_slug
+
+    def __str__(self) -> str:
+        return self.title
+
+
+class PortfolioProject(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField(default='')
+    image = models.ImageField(
+        null=True, blank=True, upload_to="images", default='placeholder.jpg'
+    )
+    tags = models.ManyToManyField(Tag, null=True)
+    link = models.URLField()
 
     def __str__(self) -> str:
         return self.title

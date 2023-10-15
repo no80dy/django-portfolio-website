@@ -7,7 +7,7 @@ services:
     env_file:
       - ./.env
     volumes:
-      - ./nobodyas/staticfiles:/opt/nobodyas/static/
+      - ./nobodyas/staticfiles:/opt/nobodyas/staticfiles/
       - ./nobodyas/media:/opt/nobodyas/media/
     ports:
       - "8000"
